@@ -1,0 +1,7 @@
+{
+  "name": "linterna-maquetacion82",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
