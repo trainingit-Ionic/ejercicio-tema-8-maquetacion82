@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button *ngIf="flash != false">
+  <ion-button *ngIf="flash != false" (click)="flashButton()">
     <ion-icon name="flashlight"></ion-icon>
     Flashlight
   </ion-button>
