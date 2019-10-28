@@ -12,19 +12,19 @@ export class HomePage {
   flash: boolean;
   constructor(private flashlight: Flashlight, public platform: Platform, public toastController: ToastController) {
     this.platform.ready().then(() => {
-      this.platform.platforms().filter((item) => {
-        if ((item === 'mobile') || (item === 'tablet')) {
-          if (this.flashlight.available()) {
+      if (this.platform.is('mobile') || this.platform.is('tablet') ) {
+        this.flashlight.available().then( (result) => {
+          if (result === true) {
             this.flash = true;
           } else {
             this.flash = false;
             this.showToast();
           }
-        } else {
-          this.flash = false;
-          this.showToast();
-        }
-      });
+        });
+      } else {
+        this.flash = false;
+        this.showToast();
+      }
       this.platform.pause.subscribe(
         () => this.flashlight.switchOff()
       );
